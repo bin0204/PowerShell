@@ -11,4 +11,6 @@ foreach ($i in $ipAddress){
 	$newArray += $a	
 }
 
-if ()
+if ($newArray[2] -eq 255) {
+	'The third element of ipAddress is 255'
+}

@@ -1,0 +1,39 @@
+https://stackoverflow.com/questions/12268885/powershell-get-fqdn-hostname
+https://github.com/sqlcollaborative/dbatools/blob/master/functions/Resolve-DbaNetworkName.ps1
+
+
+
+psuedo-code:
+
+input var:
+\Reverse DNS name, PTR record / FQDN \
+    example: HostName: gcb111sta00.cis.byuh.edu, AddressList {172...111.100}
+\\
+
+if IP address = 172...101.* {
+    set $CHANNEL=101
+    install printer: GCB101_for_x64.exe
+}
+
+if IP address = 172...111.* {
+    set $CHANNEL=111
+    install SAP
+    install printer: GCB111_for_x64.exe
+}
+
+if IP address = 172...140.* {
+    set $CHANNEL=140
+    install printer: GCB140_for_x64.exe
+}
+
+if IP address = 172...*.100 {
+    & "msiexec.exe" /i Teacher.msi /qn REBOOT=ReallySuppress NO_REBOOT=1 CHANNEL=$CHANNEL ADVANCED_OPTIONS=1 SECURE_MODE=1 PASSWORD=x 
+}
+
+if IP address = 172...*.{101..255} {
+    & "msiexec.exe" /i Student.msi /qn REBOOT=ReallySuppress NO_REBOOT=1 CHANNEL=$CHANNEL ADVANCED_OPTIONS=1 SECURE_MODE=1 PASSWORD=x 
+}
+
+else {
+    cry :'(
+}
